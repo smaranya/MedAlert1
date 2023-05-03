@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "411835656411",
+    "project_id": "fir-6bf6b",
+    "storage_bucket": "fir-6bf6b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411835656411:android:e94c923d4e4855305444fe",
+        "android_client_info": {
+          "package_name": "com.example.medalert"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411835656411-as13soldqklvs3h6ch3qelh78mc9g9da.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdxt4whHvZch2JkIIrZl_ey_VlYQAlKj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411835656411-4so0spn2dgaj82roaqej89043h0pgate.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
