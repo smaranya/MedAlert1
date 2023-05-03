@@ -23,7 +23,14 @@ public class Dashboard extends AppCompatActivity {
 
         username = findViewById(R.id.dash_user);
         Bundle bundle = getIntent().getExtras();
+        String user_name = bundle.getString("username");
         String email = bundle.getString("email");
-        username.setText("Hello, "+ email);
+        if(user_name == null)
+        {
+            username.setText("Hello, user of email: "+email);
+        }
+        else{
+            username.setText("Hello, "+ user_name);
+        }
     }
 }

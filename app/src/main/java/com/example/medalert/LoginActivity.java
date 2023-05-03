@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailTV, passwordTV;
-    private Button loginBtn;
+    private Button loginBtn, registerBtn;
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
@@ -41,8 +41,19 @@ public class LoginActivity extends AppCompatActivity {
                 loginUserAccount();
             }
         });
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerNewUser();
+            }
+        });
     }
 
+    private void registerNewUser() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
     private void loginUserAccount() {
         progressBar.setVisibility(View.VISIBLE);
 
@@ -72,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else {
-                            Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
                         }
                     }
@@ -84,6 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordTV = findViewById(R.id.password);
 
         loginBtn = findViewById(R.id.login);
+        registerBtn = findViewById(R.id.register);
         progressBar = findViewById(R.id.progressBar);
     }
 }

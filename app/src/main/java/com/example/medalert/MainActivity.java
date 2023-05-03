@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity{
-    private EditText emailTV, passwordTV;
+    private EditText emailTV, passwordTV, user_nameTV;
     private Button regBtn;
     private ProgressBar progressBar;
 
@@ -45,9 +45,10 @@ public class MainActivity extends AppCompatActivity{
     private void registerNewUser() {
         progressBar.setVisibility(View.VISIBLE);
 
-        String email, password;
+        String email, password, user_name;
         email = emailTV.getText().toString();
         password = passwordTV.getText().toString();
+        user_name = user_nameTV.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
@@ -55,6 +56,10 @@ public class MainActivity extends AppCompatActivity{
         }
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if (TextUtils.isEmpty(user_name)) {
+            Toast.makeText(getApplicationContext(), "Please enter username!", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -66,8 +71,11 @@ public class MainActivity extends AppCompatActivity{
                             Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
 
-                            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                            intent.putExtra("username", user_name);
+                            intent.putExtra("email", email);
                             startActivity(intent);
+                            finish();
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "Registration failed! Please try again later", Toast.LENGTH_LONG).show();
@@ -81,6 +89,7 @@ public class MainActivity extends AppCompatActivity{
         passwordTV = findViewById(R.id.password);
         regBtn = findViewById(R.id.register);
         progressBar = findViewById(R.id.progressBar);
+        user_nameTV = findViewById(R.id.username);
     }
 }
 
