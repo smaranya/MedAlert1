@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.FirebaseApp;
@@ -29,6 +30,11 @@ public class Dashboard extends AppCompatActivity {
         }
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         username = findViewById(R.id.dash_user);
+
+        CollectionReference users = firestore.collection("users");
+
+        System.out.println(users);
+
         Bundle bundle = getIntent().getExtras();
         String user_name = bundle.getString("username");
         String email = bundle.getString("email");
