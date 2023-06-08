@@ -2,6 +2,7 @@ package com.example.medalert;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 
 import android.content.Intent;
@@ -25,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar progressBar;
 
     private FirebaseAuth mAuth;
+
+    MyDatabaseHelper myDB;
+    String username = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
 
                             Intent intent = new Intent(LoginActivity.this, Dashboard.class);
-                            intent.putExtra("email", email);
+                            username = showName(email);
+                            intent.putExtra("username", username);
                             startActivity(intent);
                         }
                         else {
@@ -90,6 +95,17 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
+    String showName(String emailadd){
+        Cursor cursor = myDB.findName(emailadd);
+        if(cursor.getCount() == 0){
+            Toast.makeText(this, "User Not Found", Toast.LENGTH_SHORT).show();
+        }else {
+            while (cursor.moveToFirst()) {
+                username = cursor.getString(1);
+            }
+        }
+        return username;
+    }
     private void initializeUI() {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);

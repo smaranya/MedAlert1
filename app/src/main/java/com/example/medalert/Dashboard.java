@@ -3,6 +3,7 @@ package com.example.medalert;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,6 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Dashboard extends AppCompatActivity {
 
     public TextView username;
+    MyDatabaseHelper myDB;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -28,24 +30,11 @@ public class Dashboard extends AppCompatActivity {
         if (FirebaseApp.getApps(this).isEmpty()) {
             FirebaseApp.initializeApp(this);
         }
-        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         username = findViewById(R.id.dash_user);
-
-        CollectionReference users = firestore.collection("users");
-
-        System.out.println(users);
 
         Bundle bundle = getIntent().getExtras();
         String user_name = bundle.getString("username");
-        String email = bundle.getString("email");
-        if(user_name == null)
-        {
-            username.setText("Hello, user of email: "+email);
-        }
-        else{
-            username.setText("Hello, "+ user_name);
-        }
-
+        username.setText("Hello, "+user_name);
 
     }
 }

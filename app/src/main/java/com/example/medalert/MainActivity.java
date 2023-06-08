@@ -75,9 +75,11 @@ public class MainActivity extends AppCompatActivity{
                             Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
                             progressBar.setVisibility(View.GONE);
 
+                            MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity.this);
+                            myDB.addUser(email, user_name, password);
+
                             Intent intent = new Intent(MainActivity.this, Dashboard.class);
                             intent.putExtra("username", user_name);
-                            intent.putExtra("email", email);
                             startActivity(intent);
                             finish();
                         }
