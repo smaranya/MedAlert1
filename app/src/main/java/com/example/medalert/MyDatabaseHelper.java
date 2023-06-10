@@ -57,14 +57,4 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Added User", Toast.LENGTH_SHORT).show();
         }
     }
-    Cursor findName(String email){
-        String query = "SELECT * FROM "+TABLE_NAME+" WHERE email = " +email+";";
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query, null);
-        }
-        return cursor;
-    }
 }

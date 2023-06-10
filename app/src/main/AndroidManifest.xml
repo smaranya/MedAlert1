@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MedAlert"
         tools:targetApi="31">
         <activity
+            android:name=".AddMedicine"
+            android:exported="false" />
+        <activity
             android:name=".Dashboard"
             android:exported="false" />
         <activity

@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     MyDatabaseHelper myDB;
-    String username = null;
+    String user_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +79,13 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
 
                             Intent intent = new Intent(LoginActivity.this, Dashboard.class);
-                            username = showName(email);
-                            intent.putExtra("username", username);
+                            intent.putExtra("email", email);
                             startActivity(intent);
+
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "Login failed!", Toast.LENGTH_LONG).show();
@@ -95,17 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    String showName(String emailadd){
-        Cursor cursor = myDB.findName(emailadd);
-        if(cursor.getCount() == 0){
-            Toast.makeText(this, "User Not Found", Toast.LENGTH_SHORT).show();
-        }else {
-            while (cursor.moveToFirst()) {
-                username = cursor.getString(1);
-            }
-        }
-        return username;
-    }
     private void initializeUI() {
         emailTV = findViewById(R.id.email);
         passwordTV = findViewById(R.id.password);

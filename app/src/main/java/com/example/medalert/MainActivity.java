@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity{
                             myDB.addUser(email, user_name, password);
 
                             Intent intent = new Intent(MainActivity.this, Dashboard.class);
-                            intent.putExtra("username", user_name);
+                            intent.putExtra("email", email);
                             startActivity(intent);
                             finish();
                         }
