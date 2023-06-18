@@ -13,13 +13,9 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "MedAlert.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
-    private static final String TABLE_NAME = "users";
-    private static final String COLUMN_USER_ID = "_id";
-    private static final String COLUMN_USER_EMAIL = "email";
-    private static final String COLUMN_USER_PASSWORD = "password";
-    private static final String COLUMN_USER_NAME = "username";
+
 
     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -28,17 +24,14 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE "+TABLE_NAME+
-                " ("+COLUMN_USER_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                COLUMN_USER_EMAIL+" TEXT, "+
-                COLUMN_USER_NAME+" TEXT, "+
-                COLUMN_USER_PASSWORD+" INTEGER);";
-        db.execSQL(query);
+        db.execSQL(Medicine.CREATE_MED_TABLE);
+        db.execSQL(User.CREATE_USER_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+User.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS "+Medicine.TABLE_NAME);
         onCreate(db);
     }
 
@@ -46,15 +39,34 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_USER_EMAIL, email);
-        cv.put(COLUMN_USER_NAME, username);
-        cv.put(COLUMN_USER_PASSWORD, password);
-        long result = db.insert(TABLE_NAME, null, cv);
+        cv.put(User.COLUMN_USER_EMAIL, email);
+        cv.put(User.COLUMN_USER_NAME, username);
+        cv.put(User.COLUMN_USER_PASSWORD, password);
+        long result = db.insert(User.TABLE_NAME, null, cv);
         if(result == -1){
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
         }
         else{
             Toast.makeText(context, "Added User", Toast.LENGTH_SHORT).show();
+        }
+    }
+    void addMedicine(String email, String medName, String medType, String medUnit, Integer dosage, Integer rem, String medTime){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(Medicine.COLUMN_USER_EMAIL, email);
+        cv.put(Medicine.COLUMN_MED_NAME, medName);
+        cv.put(Medicine.COLUMN_MED_TYPE, medType);
+        cv.put(Medicine.COLUMN_MED_UNIT, medUnit);
+        cv.put(Medicine.COLUMN_DOSAGE_LENGTH, dosage);
+        cv.put(Medicine.COLUMN_DOSAGE_PRESENT, rem);
+        cv.put(Medicine.COLUMN_TIMING, medTime);
+        long result = db.insert(Medicine.TABLE_NAME, null, cv);
+        if(result == -1){
+            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context, "Added Medicine", Toast.LENGTH_SHORT).show();
         }
     }
 }
