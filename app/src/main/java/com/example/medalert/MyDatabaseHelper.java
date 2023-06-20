@@ -69,4 +69,20 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Added Medicine", Toast.LENGTH_SHORT).show();
         }
     }
+    Cursor fetchUserByEmail(String email) {
+
+
+        // Create the SQL query
+
+        String query = "SELECT "+ Medicine.COLUMN_MED_NAME + "," + Medicine.COLUMN_MED_TYPE + ", " + Medicine.COLUMN_DOSAGE_LENGTH + " ," + Medicine.COLUMN_TIMING + "," + Medicine.COLUMN_DOSAGE_PRESENT +" ," + Medicine.COLUMN_TIMING + " FROM " + Medicine.TABLE_NAME + " WHERE " + Medicine.COLUMN_USER_EMAIL + " = " + email ;
+        SQLiteDatabase db = this.getReadableDatabase();
+        // Execute the query
+       Cursor cursor = null;
+
+
+       if(db!=null){
+          cursor =  db.rawQuery(query,null);
+       }
+       return cursor;
+    }
 }

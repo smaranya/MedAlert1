@@ -1,6 +1,12 @@
 package com.example.medalert;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 public class Medicine {
+
+    private SQLiteDatabase database;
     public static final String TABLE_NAME = "medicines";
     public static final String COLUMN_MED_ID = "_id";
     public static final String COLUMN_USER_EMAIL = "email";
@@ -20,4 +26,6 @@ public class Medicine {
             Medicine.COLUMN_DOSAGE_LENGTH+" INTEGER, "+
             Medicine.COLUMN_DOSAGE_PRESENT+" INTEGER, "+
             Medicine.COLUMN_TIMING+" TEXT);";
+
+
 }
