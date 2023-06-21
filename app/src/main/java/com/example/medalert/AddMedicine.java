@@ -3,6 +3,7 @@ package com.example.medalert;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,6 +68,8 @@ public class AddMedicine extends AppCompatActivity {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(AddMedicine.this);
                 myDB.addMedicine(email, name, type, unit, dose, dosage, timeInput);
                 Toast.makeText(getApplicationContext(), "Added Prescription Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddMedicine.this,Dashboard.class);
+                startActivity(intent);
             }
         });
 
