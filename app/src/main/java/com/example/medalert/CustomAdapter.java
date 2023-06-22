@@ -9,21 +9,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
-    Context context;
+   private Context context;
    private ArrayList name,type,dose,unit,remaning,time;
 
-    CustomAdapter(Context context,ArrayList name,ArrayList type,ArrayList dose,ArrayList unit,ArrayList time,ArrayList remaning){
+    CustomAdapter(Context context, ArrayList name, ArrayList type, ArrayList dose, ArrayList time,ArrayList remaning){
         this.context = context;
         this.name = name;
         this.time =  time;
         this.dose = dose;
-        this.unit  = unit;
+//        this.unit  = unit;
         this.type = type;
         this.remaning = remaning;
     }
@@ -37,10 +35,11 @@ public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
             holder.name.setText(String.valueOf(name.get(position)));
             holder.type.setText(String.valueOf(type.get(position)));
             holder.dose.setText(String.valueOf(dose.get(position)));
-            holder.unit.setText(String.valueOf(unit.get(position)));
+//            holder.unit.setText(String.valueOf(unit.get(position)));
             holder.remaning.setText(String.valueOf(remaning.get(position)));
             holder.time.setText(String.valueOf(time.get(position)));
 
@@ -60,7 +59,7 @@ public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
             name = itemView.findViewById(R.id.name);
             type = itemView.findViewById(R.id.type);
             dose = itemView.findViewById(R.id.dosage);
-            unit = itemView.findViewById(R.id.unit);
+//            unit = itemView.findViewById(R.id.unit);
             remaning = itemView.findViewById(R.id.remaining);
             time = itemView.findViewById(R.id.time);
 
