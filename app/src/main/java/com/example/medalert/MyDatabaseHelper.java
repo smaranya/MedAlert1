@@ -96,4 +96,13 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context,"Data Updated",Toast.LENGTH_SHORT).show();
         }
     }
+    void deleteOneRow(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+       long result =  db.delete(Medicine.TABLE_NAME,"_id=?",new String[]{id});
+       if(result == -1){
+           Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT).show();
+       }else{
+           Toast.makeText(context, "Data Deleted", Toast.LENGTH_SHORT).show();
+       }
+    }
 }

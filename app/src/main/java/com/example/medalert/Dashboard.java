@@ -1,10 +1,12 @@
 package com.example.medalert;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -22,7 +24,7 @@ import javax.annotation.Nullable;
 public class Dashboard extends AppCompatActivity {
 
     public TextView username;
-    Button addMedicine;
+    Button addMedicine,delete;
 
    ArrayList<String> id,name,time,dose,remaining;
    CustomAdapter customAdapter;
@@ -42,6 +44,7 @@ public class Dashboard extends AppCompatActivity {
         }
 
         username = findViewById(R.id.dash_user);
+        delete = findViewById(R.id.button2);
         Bundle bundle = getIntent().getExtras();
         email = bundle.getString("email");
         username.setText("Hello, "+email);
@@ -54,6 +57,7 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         id = new ArrayList<>();
         name = new ArrayList<>();
         time = new ArrayList<>();
@@ -63,6 +67,8 @@ public class Dashboard extends AppCompatActivity {
         customAdapter = new CustomAdapter(Dashboard.this,this,id,name,time,dose,remaining);
         recylerview.setAdapter(customAdapter);
         recylerview.setLayoutManager(new LinearLayoutManager(Dashboard.this));
+
+
     }
 
     @Override
@@ -90,4 +96,5 @@ public class Dashboard extends AppCompatActivity {
         }
 
     }
+
 }
