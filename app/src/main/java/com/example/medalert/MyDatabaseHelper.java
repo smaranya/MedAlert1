@@ -70,19 +70,30 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
     Cursor fetchUserByEmail(String email) {
-
-
-        // Create the SQL query
-
-        String query = "SELECT * FROM " + Medicine.TABLE_NAME  ;
+        String query = "SELECT * FROM " + Medicine.TABLE_NAME + " WHERE " + Medicine.COLUMN_USER_EMAIL + " = '" + email + "'";
         SQLiteDatabase db = this.getReadableDatabase();
-        // Execute the query
        Cursor cursor = null;
-
-
        if(db!=null){
           cursor =  db.rawQuery(query,null);
        }
        return cursor;
+    }
+
+
+    void updateData(String id,int dose,int left ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        //content.put(Medicine.COLUMN_MED_ID,id);
+        content.put(Medicine.COLUMN_DOSAGE_LENGTH,dose);
+        content.put(Medicine.COLUMN_DOSAGE_PRESENT,left);
+
+
+        long result = db.update(Medicine.TABLE_NAME,content,Medicine.COLUMN_MED_ID +" = "+id,null);
+        if(result == -1){
+            Toast.makeText(context,"Failed to Update Data",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"Data Updated",Toast.LENGTH_SHORT).show();
+        }
     }
 }

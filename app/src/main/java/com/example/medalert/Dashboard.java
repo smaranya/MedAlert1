@@ -17,12 +17,14 @@ import com.google.firebase.FirebaseApp;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
+
 public class Dashboard extends AppCompatActivity {
 
     public TextView username;
     Button addMedicine;
 
-   ArrayList<String> name,type,dose,unit,remaning,time;
+   ArrayList<String> id,name,time,dose,remaining;
    CustomAdapter customAdapter;
     String email = null;
     MyDatabaseHelper myDb  = new MyDatabaseHelper(Dashboard.this);
@@ -52,24 +54,23 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        id = new ArrayList<>();
         name = new ArrayList<>();
-        type = new ArrayList<>();
-        dose = new ArrayList<>();
-
-        remaning = new ArrayList<>();
         time = new ArrayList<>();
+        dose = new ArrayList<>();
+        remaining = new ArrayList<>();
         storeAllData();
-        customAdapter = new CustomAdapter(Dashboard.this,name,type,dose,time,remaning);
+        customAdapter = new CustomAdapter(Dashboard.this,this,id,name,time,dose,remaining);
         recylerview.setAdapter(customAdapter);
         recylerview.setLayoutManager(new LinearLayoutManager(Dashboard.this));
+    }
 
-
-
-
-
-        //Add a new medication
-
-
+    @Override
+    protected  void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+        if(requestCode == 1){
+            recreate();
+        }
     }
     void storeAllData(){
         Cursor cursor = myDb.fetchUserByEmail(email);
@@ -77,11 +78,12 @@ public class Dashboard extends AppCompatActivity {
             Toast.makeText(this,"No Data.", Toast.LENGTH_SHORT).show();
         }else{
             while (cursor.moveToNext()){
+                id.add(cursor.getString(0));
                 name.add(cursor.getString(2));
-                type.add(cursor.getString(3));
-                remaning.add(cursor.getString(6));
-                time.add(cursor.getString(7));
                 dose.add(cursor.getString(5));
+                remaining.add(cursor.getString(6));
+                time.add(cursor.getString(7));
+
 
             }
 
