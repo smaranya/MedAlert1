@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 public class Dashboard extends AppCompatActivity {
 
     public TextView username;
-    Button addMedicine,delete;
+    Button addMedicine;
 
    ArrayList<String> id,name,time,dose,remaining;
    CustomAdapter customAdapter;
@@ -44,7 +44,6 @@ public class Dashboard extends AppCompatActivity {
         }
 
         username = findViewById(R.id.dash_user);
-        delete = findViewById(R.id.button2);
         Bundle bundle = getIntent().getExtras();
         email = bundle.getString("email");
         username.setText("Hello, "+email);

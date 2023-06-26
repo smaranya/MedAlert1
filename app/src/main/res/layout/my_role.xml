@@ -17,15 +17,16 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/card_background_color"
-            android:padding="12dp">
+            android:background="@color/teal_700"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/name"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="Name 1"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="Timing 1"
+                android:textColor="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/name"
                 app:layout_constraintTop_toTopOf="@+id/name" />
 
@@ -42,21 +44,13 @@
                 android:id="@+id/button"
                 android:layout_width="103dp"
                 android:layout_height="41dp"
-                android:layout_marginStart="43dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="92dp"
+                android:backgroundTint="@color/black"
                 android:text="Update"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button2"
                 app:layout_constraintStart_toEndOf="@+id/time2"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="89dp"
-                android:layout_height="44dp"
-                android:text="Delete"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.487" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

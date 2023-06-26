@@ -68,14 +68,13 @@ public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
     public class MyViewHolder extends RecyclerView.ViewHolder {
     TextView name,time;
     LinearLayout mainLayout;
-    Button update,delete;
+    Button update;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             time = itemView.findViewById(R.id.time2);
             mainLayout = itemView.findViewById(R.id.mainLayout);
             update = itemView.findViewById(R.id.button);
-            delete = itemView.findViewById(R.id.button2);
         }
     }
 }

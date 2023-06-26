@@ -13,7 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="600dp"
             android:padding="16dp"
             tools:context=".AddMedicine">
 
@@ -21,46 +21,47 @@
                 android:id="@+id/remaining"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
                 android:hint="Total dosage present"
                 android:inputType="text"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_bias="0.344" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/dose2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="40dp"
                 android:hint="Dosage length"
                 android:inputType="text"
-                app:layout_constraintTop_toBottomOf="@+id/remaining"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintVertical_bias="0.1" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/remaining" />
 
             <Button
                 android:id="@+id/update"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="112dp"
+                android:backgroundTint="@color/teal_700"
                 android:text="Update Med"
-                app:layout_constraintTop_toBottomOf="@+id/dose2"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/delete"
-                app:layout_constraintHorizontal_bias="0.5" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dose2" />
 
             <Button
                 android:id="@+id/delete"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="112dp"
+                android:backgroundTint="@color/teal_700"
                 android:text="Delete Med"
-                app:layout_constraintTop_toBottomOf="@+id/dose2"
-                app:layout_constraintStart_toEndOf="@+id/update"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5" />
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/update"
+                app:layout_constraintTop_toBottomOf="@+id/dose2" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
