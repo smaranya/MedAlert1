@@ -13,8 +13,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
             android:padding="16dp"
             tools:context=".AddMedicine">
 
@@ -22,11 +21,9 @@
                 android:id="@+id/remaining"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:hint="Total dosage present"
                 android:inputType="text"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/dose2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0.344" />
@@ -35,11 +32,10 @@
                 android:id="@+id/dose2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:layout_marginTop="8dp"
                 android:hint="Dosage length"
                 android:inputType="text"
                 app:layout_constraintTop_toBottomOf="@+id/remaining"
-                app:layout_constraintBottom_toTopOf="@+id/update"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintVertical_bias="0.1" />
@@ -52,19 +48,19 @@
                 android:text="Update Med"
                 app:layout_constraintTop_toBottomOf="@+id/dose2"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.061" />
+                app:layout_constraintEnd_toStartOf="@+id/delete"
+                app:layout_constraintHorizontal_bias="0.5" />
 
             <Button
                 android:id="@+id/delete"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="32dp"
                 android:text="Delete Med"
                 app:layout_constraintTop_toBottomOf="@+id/dose2"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/update"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.555" />
+                app:layout_constraintHorizontal_bias="0.5" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>

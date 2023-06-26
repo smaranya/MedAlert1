@@ -57,11 +57,11 @@ public class UpdateActivity extends AppCompatActivity {
 
 
    public void getandSetIntentData(){
-        if(getIntent().hasExtra("_id")&&getIntent().hasExtra("dose")&& getIntent().hasExtra("remaining")&&getIntent().hasExtra("email")){
+        if(getIntent().hasExtra("_id")&&getIntent().hasExtra("dose")&& getIntent().hasExtra("remaining")){
             //Get Intent Data
             id = getIntent().getStringExtra("_id");
             dosage = getIntent().getStringExtra("dose");
-            email = getIntent().getStringExtra("email");
+
             left  = getIntent().getStringExtra("remaining");
             name  = getIntent().getStringExtra("name");
             //Set Intent Data
@@ -99,13 +99,6 @@ public class UpdateActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == R.id.delete_all){
-            Toast.makeText(this, "Deleted All", Toast.LENGTH_SHORT).show();
-            MyDatabaseHelper db = new MyDatabaseHelper(this);
-            db.deleteAll(email);
-        }
-        return super.onOptionsItemSelected(item);
-    }
+
+
 }
