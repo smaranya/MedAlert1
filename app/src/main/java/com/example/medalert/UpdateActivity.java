@@ -1,20 +1,24 @@
 package com.example.medalert;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class UpdateActivity extends AppCompatActivity {
     EditText dose, remaining;
     Button update,delete;
-    String  id,dosage,left,name;
+    String  id,dosage,left,name,email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +57,11 @@ public class UpdateActivity extends AppCompatActivity {
 
 
    public void getandSetIntentData(){
-        if(getIntent().hasExtra("_id")&&getIntent().hasExtra("dose")&& getIntent().hasExtra("remaining")){
+        if(getIntent().hasExtra("_id")&&getIntent().hasExtra("dose")&& getIntent().hasExtra("remaining")&&getIntent().hasExtra("email")){
             //Get Intent Data
             id = getIntent().getStringExtra("_id");
             dosage = getIntent().getStringExtra("dose");
+            email = getIntent().getStringExtra("email");
             left  = getIntent().getStringExtra("remaining");
             name  = getIntent().getStringExtra("name");
             //Set Intent Data
@@ -85,5 +90,22 @@ public class UpdateActivity extends AppCompatActivity {
             }
         });
         builder.create().show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.my_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.delete_all){
+            Toast.makeText(this, "Deleted All", Toast.LENGTH_SHORT).show();
+            MyDatabaseHelper db = new MyDatabaseHelper(this);
+            db.deleteAll(email);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

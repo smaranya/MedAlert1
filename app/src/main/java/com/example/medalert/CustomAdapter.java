@@ -18,12 +18,13 @@ import java.util.ArrayList;
 public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
    private Context context;
-   private ArrayList id, name,time,dose,remaining;
+   private ArrayList id, name,time,dose,remaining,Email;
     private MyViewHolder holder;
     Activity activity;
 
-    CustomAdapter(Activity activity,Context context, ArrayList id,ArrayList name, ArrayList time,ArrayList dose,ArrayList remaining){
+    CustomAdapter(Activity activity,Context context, ArrayList id,ArrayList name, ArrayList time,ArrayList dose,ArrayList remaining,ArrayList Email){
         this.context = context;
+        this.Email = Email;
         this.activity = activity;
         this.id = id;
         this.dose = dose;
@@ -51,6 +52,7 @@ public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
                 Intent intent = new Intent(context,UpdateActivity.class);
                 intent.putExtra("_id",String.valueOf(id.get(position)));
                 intent.putExtra("name",String.valueOf(name.get(position)));
+                intent.putExtra("email",String.valueOf(Email.get(position)));
                 intent.putExtra("dose",String.valueOf(dose.get(position)));
                 intent.putExtra("remaining",String.valueOf(remaining.get(position)));
                 activity.startActivityForResult(intent,1);
