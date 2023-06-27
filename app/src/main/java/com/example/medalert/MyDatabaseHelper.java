@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -109,4 +112,33 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db  = this.getWritableDatabase();
         db.execSQL("DELETE FROM "+ Medicine.TABLE_NAME+ "WHERE "+ Medicine.COLUMN_USER_EMAIL+ " = "+email +"''");
     }
+    public List<String> getAllMedicineTimes(String email) {
+        List<String> timesList = new ArrayList<>();
+
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = Medicine.COLUMN_USER_EMAIL + "=?";
+        String[] selectionArgs = {email};
+
+        Cursor cursor = db.query(
+                Medicine.TABLE_NAME,
+                new String[]{Medicine.COLUMN_TIMING},
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+
+        if (cursor.moveToFirst()) {
+            do {
+                String time = cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_TIMING));
+                timesList.add(time);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        return timesList;
+    }
+
+
 }

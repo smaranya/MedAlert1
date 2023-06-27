@@ -1,11 +1,7 @@
 package com.example.medalert;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,27 +23,27 @@ public class MainActivity extends AppCompatActivity{
     private EditText emailTV, passwordTV, user_nameTV;
     private Button regBtn;
     private ProgressBar progressBar;
-
+    private static final String TABLE_NAME = "medicine";
+    private static final String COLUMN_TIME = "time";
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        MyDatabaseHelper myDb = new MyDatabaseHelper(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
-
         initializeUI();
 
-        regBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registerNewUser();
-            }
-        });
+
     }
+
+
+
+
 
     private void registerNewUser() {
         progressBar.setVisibility(View.VISIBLE);
