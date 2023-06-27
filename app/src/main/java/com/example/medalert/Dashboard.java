@@ -26,7 +26,7 @@ public class Dashboard extends AppCompatActivity {
     public TextView username;
     Button addMedicine;
 
-   ArrayList<String> id,name,time,dose,remaining;
+   ArrayList<String> id,name,time,dose,remaining, type;
    CustomAdapter customAdapter;
     String email = null;
     MyDatabaseHelper myDb  = new MyDatabaseHelper(Dashboard.this);
@@ -60,11 +60,12 @@ public class Dashboard extends AppCompatActivity {
         id = new ArrayList<>();
         name = new ArrayList<>();
         time = new ArrayList<>();
+        type = new ArrayList<>();
         dose = new ArrayList<>();
         remaining = new ArrayList<>();
 
         storeAllData();
-        customAdapter = new CustomAdapter(Dashboard.this,this,id,name,time,dose,remaining);
+        customAdapter = new CustomAdapter(Dashboard.this,this,id,name,time,dose,remaining, type);
         recylerview.setAdapter(customAdapter);
         recylerview.setLayoutManager(new LinearLayoutManager(Dashboard.this));
 
@@ -87,6 +88,7 @@ public class Dashboard extends AppCompatActivity {
                 id.add(cursor.getString(0));
                 name.add(cursor.getString(2));
                 dose.add(cursor.getString(5));
+                type.add(cursor.getString(3));
                 remaining.add(cursor.getString(6));
                 time.add(cursor.getString(7));
 
