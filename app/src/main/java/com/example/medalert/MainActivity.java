@@ -23,27 +23,27 @@ public class MainActivity extends AppCompatActivity{
     private EditText emailTV, passwordTV, user_nameTV;
     private Button regBtn;
     private ProgressBar progressBar;
-    private static final String TABLE_NAME = "medicine";
-    private static final String COLUMN_TIME = "time";
+
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        MyDatabaseHelper myDb = new MyDatabaseHelper(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mAuth = FirebaseAuth.getInstance();
+
         initializeUI();
 
-
+        regBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerNewUser();
+            }
+        });
     }
-
-
-
-
 
     private void registerNewUser() {
         progressBar.setVisibility(View.VISIBLE);
@@ -97,4 +97,3 @@ public class MainActivity extends AppCompatActivity{
         user_nameTV = findViewById(R.id.username);
     }
 }
-

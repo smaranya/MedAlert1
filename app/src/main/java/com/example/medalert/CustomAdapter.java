@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
-   private Context context;
-   private ArrayList id, name,time,dose,remaining, type;
+    private Context context;
+    private ArrayList id, name,time,dose,remaining, type;
     private MyViewHolder holder;
     Activity activity;
 
@@ -73,9 +73,9 @@ public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-    TextView name,time, dose;
-    LinearLayout mainLayout;
-    Button update;
+        TextView name,time, dose;
+        LinearLayout mainLayout;
+        Button update;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
