@@ -63,12 +63,12 @@ public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
                 intent.putExtra("remaining",String.valueOf(remaining.get(position)));
                 activity.startActivityForResult(intent,1);
             }
+
         });
 
     }
     @Override
     public int getItemCount() {
-
         return name.size() ;
     }
 

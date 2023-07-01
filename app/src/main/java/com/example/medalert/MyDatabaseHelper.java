@@ -14,7 +14,7 @@ import java.util.List;
 
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
-    private Context context;
+    private final Context context;
     private static final String DATABASE_NAME = "MedAlert.db";
     private static final int DATABASE_VERSION = 2;
 
@@ -131,7 +131,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                String time = cursor.getString(cursor.getColumnIndex(Medicine.COLUMN_TIMING));
+                String time = cursor.getString(cursor.getColumnIndexOrThrow(Medicine.COLUMN_TIMING));
                 timesList.add(time);
             } while (cursor.moveToNext());
         }
