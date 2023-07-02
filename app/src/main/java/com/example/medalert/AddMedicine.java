@@ -109,6 +109,7 @@ public class AddMedicine extends AppCompatActivity  {
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minute);
 
+
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm a", Locale.getDefault());
         return sdf.format(calendar.getTime());
     }
@@ -134,7 +135,7 @@ public class AddMedicine extends AppCompatActivity  {
         }
         //When a notifciation is received this class is called upon
         Intent i = new Intent(AddMedicine.this, MyBroadcastReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(AddMedicine.this, 0, i,0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(AddMedicine.this, 0, i, PendingIntent.FLAG_IMMUTABLE);
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, cal_alarm.getTimeInMillis(),pendingIntent);
 

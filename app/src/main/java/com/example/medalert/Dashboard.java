@@ -27,10 +27,11 @@ public class Dashboard extends AppCompatActivity {
     ArrayList<String> id,name,time,dose,remaining, type;
     CustomAdapter customAdapter;
     String email = null;
+    String Email;
     MyDatabaseHelper myDb  = new MyDatabaseHelper(Dashboard.this);
 
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +45,12 @@ public class Dashboard extends AppCompatActivity {
         username = findViewById(R.id.dash_user);
         Bundle bundle = getIntent().getExtras();
         email = bundle.getString("email");
-        username.setText("Hello, "+email);
+//        Email =  getIntent().getStringExtra("Email");
+        if(email!=null)
+            username.setText("Hello, " + email);
+        if(Email != null)
+            Toast.makeText(this, Email, Toast.LENGTH_SHORT).show();
+//        }else username.setText("Hello, "+Email);
         RecyclerView recylerview = findViewById(R.id.recyclerView);
         addMedicine.setOnClickListener(new View.OnClickListener() {
             @Override
