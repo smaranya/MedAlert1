@@ -25,7 +25,7 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "Notify")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentText("Alarm Reminders")
-                .setContentText("Hey, Wake Up!")
+                .setContentText("Have your medication")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

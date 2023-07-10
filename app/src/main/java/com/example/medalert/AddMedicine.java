@@ -145,7 +145,7 @@ public class AddMedicine extends AppCompatActivity  {
     //Check for permission
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             CharSequence name = "Alarm Reminders";
-            String description = "Hey, Wake Up!!";
+            String description = "Have your medications";
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
 
             NotificationChannel channel  = new NotificationChannel("Notify", name,importance);

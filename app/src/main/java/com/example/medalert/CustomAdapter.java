@@ -1,5 +1,7 @@
 package com.example.medalert;
 
+
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -42,6 +44,7 @@ public  class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
         return new MyViewHolder(view) ;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder,final int position) {
 
